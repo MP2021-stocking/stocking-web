@@ -14,7 +14,7 @@ InputText.propTypes = {
 
 InputText.defaultProps = {
     type: "text",
-    placeholder: "hello world"
+    placeholder: "hello world!!!"
 };
 
 export const SearchBar = ({text}) => {
