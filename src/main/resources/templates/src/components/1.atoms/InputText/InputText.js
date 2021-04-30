@@ -18,9 +18,7 @@ InputText.defaultProps = {
 };
 
 export const SearchBar = ({text}) => {
-    return (<StyledSearchBar style={{
-
-    }}>
+    return (<StyledSearchBar>
         <input type="text" placeholder={text} />
         <SearchButton text={"검색"} />
     </StyledSearchBar>);

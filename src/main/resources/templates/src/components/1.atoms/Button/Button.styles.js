@@ -34,7 +34,6 @@ const StyledButton = styled.button`
   white-space: nowrap;
   font-family: S-Core, serif;
   font-weight: 400;
-  font-size: 30px;
 
   .button__icon {
     display: inline-block;

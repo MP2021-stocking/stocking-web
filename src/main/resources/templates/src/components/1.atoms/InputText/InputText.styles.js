@@ -20,7 +20,6 @@ export const StyledSearchBar = styled.div`
   width: 460px;
   height: 45px;
   background-color: #ffffff;
-  outline: 16px solid #3E9A2C;
   padding: 7.5px 0 7.5px 7.5px;
   display: flex;
   flex-direction: row;
