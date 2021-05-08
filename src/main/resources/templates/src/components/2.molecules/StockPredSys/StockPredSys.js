@@ -1,6 +1,7 @@
 import React from 'react';
 import StyledStockPredSys from "../StockPredSys/StockPredSys.styles";
-import {StockInfoText, Text} from "../../1.atoms/Text/Text";
+import {Text} from "../../1.atoms/Text/Text";
+import {StockInfoText} from "../../1.atoms/Text/StockInfoText/StockInfoText";
 import Button from "../../1.atoms/Button/Button";
 import {items} from "../../1.atoms/Button/Button-data.json";
 import {SlideMenu} from "../../1.atoms/SlideMenu/SlideMenu";

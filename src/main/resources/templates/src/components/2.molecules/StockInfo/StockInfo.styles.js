@@ -23,30 +23,6 @@ const StyledStockInfo = styled.div`
     display: flex;
     border: 1px solid black;
   }
-
-  .stock-price-main {
-    border: 1px solid black;
-    width: 25%;
-    padding: 14px 10px;
-  }
-
-  .current-price {
-    border: 1px solid black;
-  }
-
-  .current-price-info {
-    border: 1px solid black;
-  }
-
-  .stock-price-detail {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-
-    .detail {
-      display: flex;
-    }
-  }
 `;
 
 export default StyledStockInfo;

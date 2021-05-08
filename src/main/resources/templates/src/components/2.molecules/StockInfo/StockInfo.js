@@ -1,6 +1,8 @@
 import React from 'react';
 import StyledStockInfo from "./StockInfo.styles";
 import {Text} from "../../1.atoms/Text/Text";
+import {StockPriceMain} from "../../1.atoms/Text/StockPriceMain/StockPriceMain";
+import {StockPriceDetail} from "../../1.atoms/Text/StockPriceDetail/StockPriceDetail";
 
 export const StockInfo = () => {
     let stockName = "삼성전자"
@@ -20,38 +22,11 @@ export const StockInfo = () => {
             <div className={"stock-name"}>{stockName}</div>
             <div className={"stock-price-table"}>
                 <div className={"table-top"}>
-                    <div className={"stock-price-main"}>
-                        <div className={"current-price"}>{curPrice}</div>
-                        <div className={"current-price-info"}>
-                            전일대비
-                            {gapPrice}
-                            {gapPercent}
-                        </div>
-                    </div>
-                    <div className={"stock-price-detail"}>
-                        <div className={"detail"}>
-                            <div className={"prev-price"}>
-                                전일 {prevPrice}
-                            </div>
-                            <div className={"high-price"}>
-                                고가 {highPrice}
-                            </div>
-                            <div className={"trade-volume"}>
-                                거래량 {tradeAmount}
-                            </div>
-                        </div>
-                        <div className={"detail"}>
-                            <div className={"prev-price"}>
-                                시가 {openPrice}
-                            </div>
-                            <div className={"high-price"}>
-                                저가 {lowPrice}
-                            </div>
-                            <div className={"trade-volume"}>
-                                거래대금 {tradeVolume}
-                            </div>
-                        </div>
-                    </div>
+                    <StockPriceMain
+                        curPrice={curPrice} gapPrice={gapPrice} gapPercent={gapPercent}/>
+                    <StockPriceDetail
+                        prevPrice={prevPrice} highPrice={highPrice} tradeAmount={tradeAmount}
+                        openPrice={openPrice} lowPrice={lowPrice} tradeVolume={tradeVolume}/>
                 </div>
             </div>
         </div>

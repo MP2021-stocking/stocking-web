@@ -1,11 +1,14 @@
 import React from 'react';
-import {Text, MultiLineText, StockInfoText} from './Text';
+import {Text} from './Text';
+import {MultiLineText} from './MultiLineText/MultiLineText'
+import {StockInfoText} from './StockInfoText/StockInfoText'
+
 
 export default {
     title: '1.atoms/Text',
     component: Text,
     argTypes: {
-        backgroundColor: { control: 'color' },
+        backgroundColor: {control: 'color'},
     },
 };
 
@@ -42,7 +45,7 @@ const StockInfoTemplate = (args) => <StockInfoText {...args} />;
 
 export const stockInfoText = StockInfoTemplate.bind({});
 stockInfoText.args = {
-    name:"삼성전자",
+    name: "삼성전자",
     current: "82,500",
     prev: "-2,800",
     pred: 0.2,
@@ -51,7 +54,7 @@ stockInfoText.args = {
 
 export const stockInfoTitleText = StockInfoTemplate.bind({});
 stockInfoTitleText.args = {
-    name:"종목명",
+    name: "종목명",
     current: "현재가",
     prev: "전일대비",
     pred: "예측",
