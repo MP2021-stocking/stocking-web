@@ -11,7 +11,7 @@ export const Footer = () => {
 본 프로젝트와 콘텐츠 제공업체는 제공된 정보에 의한 투자 결과에 법적인 책임을 지지 않습니다. 게시된 정보는 무단으로 배포할 수 없습니다.`} />
         </div>
         <div style = {{ whiteSpace: "pre" }}>
-            <Text weight={500} text={`Copyright @ Media Team Projects        All Rights Reserved.`} />
+            <Text weight={500} size={"16px"} text={`Copyright @ Media Team Projects        All Rights Reserved.`} />
         </div>
     </StyledFooter>);
 };

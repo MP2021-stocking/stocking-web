@@ -5,27 +5,34 @@ export const StockPriceDetail = ({
                                      prevPrice, highPrice, tradeAmount,
                                      openPrice, lowPrice, tradeVolume
                                  }) => {
-    return (<StyledStockPriceDetail>
+    let highColor = (highPrice >= prevPrice)
+    let openColor = (openPrice >= prevPrice)
+    let lowColor = (lowPrice >= prevPrice)
+
+    return (<StyledStockPriceDetail highColor={highColor}
+                                    openColor={openColor}
+                                    lowColor={lowColor}>
+
         <div className={"detail"}>
-            <div className={"prev-price"}>
-                전일 {prevPrice}
+            <div className={"content"}>
+                전일 <div className={"prev-price"}>{prevPrice}</div>
             </div>
-            <div className={"high-price"}>
-                고가 {highPrice}
+            <div className={"content"}>
+                고가 <div className={"high-price"}>{highPrice}</div>
             </div>
-            <div className={"trade-volume"}>
-                거래량 {tradeAmount}
+            <div className={"content"}>
+                거래량 <div className={"trade-amount"}>{tradeAmount} </div>
             </div>
         </div>
         <div className={"detail"}>
-            <div className={"prev-price"}>
-                시가 {openPrice}
+            <div className={"content"}>
+                시가 <div className={"open-price"}>{openPrice}</div>
             </div>
-            <div className={"high-price"}>
-                저가 {lowPrice}
+            <div className={"content"}>
+                저가 <div className={"low-price"}>{lowPrice}</div>
             </div>
-            <div className={"trade-volume"}>
-                거래대금 {tradeVolume}
+            <div className={"content"}>
+                거래대금 <div className={"trade-volume"}>{tradeVolume}</div>
             </div>
         </div>
     </StyledStockPriceDetail>);
