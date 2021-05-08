@@ -4,14 +4,14 @@ import {
     Switch,
     Route
 } from "react-router-dom";
-import {loginPage2} from "./components/5.pages/LoginPage/LoginPage.stories"
+import {LoginForm} from "./components/2.molecules/LoginForm/LoginForm"
 
 function App() {
     return (
         <Router>
             <div>
                 <Switch>
-                    <Route exact path="/login2" component={loginPage2}/>
+                    <Route exact path="/login_form" component={LoginForm}/>
                 </Switch>
             </div>
         </Router>

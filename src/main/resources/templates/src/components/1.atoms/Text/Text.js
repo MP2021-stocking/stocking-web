@@ -19,15 +19,17 @@ Text.defaultProps = {
 
 export const StockInfoText = ({name, current, prev, pred, size, weight}) => {
     return (<div style={{
-            fontFamily: "S-Core",
-            fontWeight: weight,
-            textAlign:"center",
+            display: "flex",
+            flexDirection:"row",
+            justifyContent: "center",
+            alignItems: "center",
             margin: "15px 0",
+            textAlign: "center"
         }}>
-            <div style={{flex: 1, justifyContent:"center"}}> <Text text={name} weight={weight} size={size} /> </div>
-            <div style={{flex: 1, justifyContent:"center"}}> <Text text={current} weight={weight} size={size} /></div>
-            <div style={{flex: 1, justifyContent:"center"}}> <Text text={prev} weight={weight} size={size} /></div>
-            <div style={{flex: 1, justifyContent:"center"}}> <Text text={pred} weight={weight} size={size} /></div>
+            <div style={{flex: 1}}><Text text={name} weight={weight} size={size}/></div>
+            <div style={{flex: 1}}><Text text={current} weight={weight} size={size}/></div>
+            <div style={{flex: 1}}><Text text={prev} weight={weight} size={size}/></div>
+            <div style={{flex: 1}}><Text text={pred} weight={weight} size={size}/></div>
         </div>
     );
 };

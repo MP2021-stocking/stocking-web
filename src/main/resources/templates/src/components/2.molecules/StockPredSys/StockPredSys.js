@@ -45,8 +45,6 @@ export const StockPredSys = () => {
     );
 };
 
-StockPredSys.propTypes =
-    {};
+StockPredSys.propTypes = {};
 
-StockPredSys.defaultProps =
-    {};
+StockPredSys.defaultProps = {};
