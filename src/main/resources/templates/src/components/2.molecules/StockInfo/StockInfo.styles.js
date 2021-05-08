@@ -1,9 +1,14 @@
 import styled from "styled-components";
 
 const StyledStockInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 732px;
+  height: 514px;
+
   .stock-info-table {
-    width: 732px;
-    height: 514px;
+    display: flex;
+    flex-direction: column;
     margin-top: 42px;
   }
 
@@ -14,11 +19,13 @@ const StyledStockInfo = styled.div`
     font-size: 28px;
   }
 
-  .stock-price-table {
-  }
-
   .table-top {
     display: flex;
+  }
+
+  .chart {
+    border: 1px solid lightgray;
+    flex: 1;
   }
 `;
 

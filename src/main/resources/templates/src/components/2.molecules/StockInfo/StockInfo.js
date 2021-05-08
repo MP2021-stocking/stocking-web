@@ -29,6 +29,9 @@ export const StockInfo = () => {
                         openPrice={openPrice} lowPrice={lowPrice} tradeVolume={tradeVolume}/>
                 </div>
             </div>
+            <div className={"chart"}>
+                1
+            </div>
         </div>
     </StyledStockInfo>);
 };
