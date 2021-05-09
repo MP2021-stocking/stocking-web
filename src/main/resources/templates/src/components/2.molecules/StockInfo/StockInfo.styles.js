@@ -25,7 +25,6 @@ const StyledStockInfo = styled.div`
 
   .chart {
     border: 1px solid lightgray;
-    flex: 1;
   }
 `;
 

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {InputText} from "../../1.atoms/InputText/InputText";
 import Button from "../../1.atoms/Button/Button";
 import {Shape} from "../../1.atoms/Shape/Shape";
