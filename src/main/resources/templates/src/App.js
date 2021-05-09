@@ -4,14 +4,16 @@ import {
     Switch,
     Route
 } from "react-router-dom";
-import {LoginForm} from "./components/2.molecules/LoginForm/LoginForm"
+import {SignupPage} from "./components/5.pages/SignupPage/SignupPage";
+import {LoginPage} from "./components/5.pages/LoginPage/LoginPage";
 
 function App() {
     return (
         <Router>
             <div>
                 <Switch>
-                    <Route exact path="/login_form" component={LoginForm}/>
+                    <Route exact path="/login" component={LoginPage}/>
+                    <Route exact path="/signup" component={SignupPage}/>
                 </Switch>
             </div>
         </Router>
