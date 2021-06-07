@@ -30,7 +30,6 @@ export const StockInfo = () => {
                 </div>
             </div>
             <div className={"chart"}>
-                1
             </div>
         </div>
     </StyledStockInfo>);
