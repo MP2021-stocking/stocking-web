@@ -2,7 +2,7 @@ import React from 'react';
 import {StockInfo} from './StockInfo';
 
 export default {
-    title: '2.molecules/StockInfo',
+    title: '2.molecules/Main/StockInfo',
     component: StockInfo,
 };
 

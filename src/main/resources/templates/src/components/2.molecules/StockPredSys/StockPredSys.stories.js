@@ -3,7 +3,7 @@ import React from 'react';
 import {StockPredSys} from './StockPredSys';
 
 export default {
-    title: '2.molecules/StockPredSys',
+    title: '2.molecules/Main/StockPredSys',
     component: StockPredSys,
 };
 

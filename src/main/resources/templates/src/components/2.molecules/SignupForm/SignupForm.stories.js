@@ -3,7 +3,7 @@ import React from 'react';
 import {SignupForm} from './SignupForm';
 
 export default {
-    title: '2.molecules/SignupForm',
+    title: '2.molecules/Auth/SignupForm',
     component: SignupForm,
     argTypes: {
         backgroundColor: {control: 'color'},

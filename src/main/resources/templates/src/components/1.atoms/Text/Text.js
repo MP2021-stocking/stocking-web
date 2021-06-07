@@ -4,7 +4,8 @@ import {number, string} from 'prop-types';
 export const Text = ({text, weight, size, color}) => {
     return (<p style={{
         fontFamily: "S-Core", fontWeight: weight,
-        fontSize: size, margin: 0, color: {color}}}>{text}</p>);
+        fontSize: size, margin: 0, color: color}
+    }>{text}</p>);
 };
 
 Text.propTypes = {

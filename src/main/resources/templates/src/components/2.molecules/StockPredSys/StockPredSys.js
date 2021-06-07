@@ -7,9 +7,20 @@ import {items} from "../../1.atoms/Button/Button-data.json";
 import {SlideMenu} from "../../1.atoms/SlideMenu/SlideMenu";
 import {SearchBar} from "../../1.atoms/InputText/InputText";
 import {Shape} from "../../1.atoms/Shape/Shape";
+import sample_data from "./sample-stock-info.json"
 
 
 export const StockPredSys = () => {
+    let stock_infos = []
+    for (let i = 0; i < sample_data.length; i++) {
+        stock_infos.push(<StockInfoText name={sample_data[i].name}
+                                        open={sample_data[i].open}
+                                        change={sample_data[i].change}
+                                        pred={sample_data[i].pred}
+                                        weight={300}
+                                        size={"16px"}/>)
+    }
+
     return (
         <StyledStockPredSys>
             <Text text={"종목 예측 시스템"} weight={600} size={"30px"}/>
@@ -22,23 +33,10 @@ export const StockPredSys = () => {
                     <SearchBar text={"종목 입력"}/>
                 </div>
                 <div className={"stock-list"}>
-                    <StockInfoText name={"종목명"} current={"현재가"} prev={"전일대비"} pred={"예측"} weight={500} size={"22px"}/>
+                    <StockInfoText name={"종목명"} open={"현재가"} change={"전일대비"} pred={"예측"} weight={500} size={"22px"}/>
                     <Shape/>
                     <div className={"stocks"}>
-                        <StockInfoText name={"삼성전자"} current={"82,500"} prev={"-2,800"} pred={0.2} weight={300}
-                                       size={"16px"}/>
-                        <StockInfoText name={"삼성전자"} current={"82,500"} prev={"-2,800"} pred={0.2} weight={300}
-                                       size={"16px"}/>
-                        <StockInfoText name={"삼성전자"} current={"82,500"} prev={"-2,800"} pred={0.2} weight={300}
-                                       size={"16px"}/>
-                        <StockInfoText name={"삼성전자"} current={"82,500"} prev={"-2,800"} pred={0.2} weight={300}
-                                       size={"16px"}/>
-                        <StockInfoText name={"삼성전자"} current={"82,500"} prev={"-2,800"} pred={0.2} weight={300}
-                                       size={"16px"}/>
-                        <StockInfoText name={"삼성전자"} current={"82,500"} prev={"-2,800"} pred={0.2} weight={300}
-                                       size={"16px"}/>
-                        <StockInfoText name={"삼성전자"} current={"82,500"} prev={"-2,800"} pred={0.2} weight={300}
-                                       size={"16px"}/>
+                        {stock_infos}
                     </div>
                 </div>
             </div>
