@@ -6,7 +6,8 @@ const StyledFooter = styled.footer`
   background-color: #a4d65e;
   height: 180px;
   margin: 0 auto;
-  div{
+
+  div {
     display: flex;
     justify-content: center;
   }
