@@ -15,7 +15,7 @@ const Template = (args) => <NewsContent {...args} />;
 
 export const basic = Template.bind({});
 basic.args = {
-    title:sample_data.positive[0].title,
-    date:sample_data.positive[0].date,
-    content:sample_data.positive[0].content
+    title: sample_data.positive[0].title,
+    date: sample_data.positive[0].date,
+    content: sample_data.positive[0].content
 };

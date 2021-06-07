@@ -5,9 +5,9 @@ export const MultiLineText = ({text, weight}) => {
     return (<pre style={{
         fontFamily: "S-Core",
         fontWeight: weight,
-        whiteSpace:"pre-wrap",
-        textAlign:"justify",
-        textJustify:"inter-word"
+        whiteSpace: "pre-wrap",
+        textAlign: "justify",
+        textJustify: "inter-word"
     }}>{text}</pre>);
 };
 

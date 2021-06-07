@@ -3,10 +3,12 @@ import styled from "styled-components";
 const StyledNewsAnalysis = styled.div`
   display: flex;
   flex-direction: column;
-  .news-top{
+
+  .news-top {
     margin-bottom: 40px;
   }
-  .news-bottom{
+
+  .news-bottom {
     display: flex;
     flex-direction: column;
   }
