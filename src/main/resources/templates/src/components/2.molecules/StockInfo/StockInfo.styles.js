@@ -25,6 +25,9 @@ const StyledStockInfo = styled.div`
 
   .chart {
     border: 1px solid lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
