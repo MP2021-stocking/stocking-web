@@ -17,7 +17,7 @@ export const StockPredSys = () => {
                                         open={sample_data[i].open}
                                         change={sample_data[i].change}
                                         pred={sample_data[i].pred}
-                                        weight={300}
+                                        weight={400}
                                         size={"16px"}/>)
     }
 
