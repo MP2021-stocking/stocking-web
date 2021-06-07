@@ -4,6 +4,8 @@ const StyledStockPredSys = styled.div`
   width: 494px;
   display: flex;
   flex-direction: column;
+  margin-right: 100px;
+  margin-bottom: 100px;
 
   div {
     display: flex;
