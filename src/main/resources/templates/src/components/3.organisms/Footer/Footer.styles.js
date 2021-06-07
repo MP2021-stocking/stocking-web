@@ -5,8 +5,11 @@ const StyledFooter = styled.footer`
   opacity: 0.72;
   background-color: #a4d65e;
   height: 180px;
-  text-align: center;
   margin: 0 auto;
+  div{
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export default StyledFooter;
