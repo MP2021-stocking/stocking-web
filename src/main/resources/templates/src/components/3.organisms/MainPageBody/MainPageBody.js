@@ -9,7 +9,7 @@ function MainPageBody() {
     return (<StyledMainPageBody>
         <div className={"stock-body"}>
             <StockPredSys/>
-            <StockInfo/>
+            <StockInfo name={"삼성전자"}/>
         </div>
         <div className={"news-body"}>
             <NewsAnalysis/>
