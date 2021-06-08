@@ -1,22 +1,25 @@
 import React from 'react';
 import StyledStockPredSys from "../StockPredSys/StockPredSys.styles";
+import {withRouter} from "react-router-dom";
 import {Text} from "../../1.atoms/Text/Text";
 import {StockInfoText} from "../../1.atoms/Text/StockInfoText/StockInfoText";
 import Button from "../../1.atoms/Button/Button";
-import {items} from "../../1.atoms/Button/Button-data.json";
 import {SlideMenu} from "../../1.atoms/SlideMenu/SlideMenu";
 import {SearchBar} from "../../1.atoms/InputText/InputText";
 import {Shape} from "../../1.atoms/Shape/Shape";
-import sample_data from "./sample-stock-info.json"
+import {items} from "../../1.atoms/Button/Button-data.json";
+import {getAllStock} from "../../../_actions/action";
 
 
-export const StockPredSys = () => {
+function StockPredSys() {
+    let stockData = getAllStock().payload;
+
     let stock_infos = []
-    for (let i = 0; i < sample_data.length; i++) {
-        stock_infos.push(<StockInfoText name={sample_data[i].name}
-                                        open={sample_data[i].open}
-                                        change={sample_data[i].change}
-                                        pred={sample_data[i].pred}
+    for (let i = 0; i < stockData.length; i++) {
+        stock_infos.push(<StockInfoText name={stockData[i].name}
+                                        open={stockData[i].open}
+                                        change={stockData[i].change}
+                                        pred={stockData[i].pred}
                                         weight={400}
                                         size={"16px"}/>)
     }
@@ -42,8 +45,10 @@ export const StockPredSys = () => {
             </div>
         </StyledStockPredSys>
     );
-};
+}
 
 StockPredSys.propTypes = {};
 
 StockPredSys.defaultProps = {};
+
+export default withRouter(StockPredSys);

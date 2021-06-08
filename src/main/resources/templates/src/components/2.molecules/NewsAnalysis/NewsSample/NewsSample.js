@@ -1,17 +1,18 @@
 import React from 'react';
 import StyledNewsSample from "./NewsSample.styles";
 import {Text} from "../../../1.atoms/Text/Text";
-import posIcon from "./increase.png"
-import negIcon from "./decrease.png"
 import {array} from "prop-types";
 import {NewsContent} from "./NewsContent/NewsContent";
 import {Shape} from "../../../1.atoms/Shape/Shape";
-import sample_data from "../sample-news.json"
+import posIcon from "./increase.png"
+import negIcon from "./decrease.png"
 
 
 export const NewsSample = ({positive, negative}) => {
     let pos_newses = []
-    for (let i = 0; i < positive.length; i++) {
+    let numSamplePos = Math.min(positive.length, 2)
+    let numSampleNeg = Math.min(negative.length, 2)
+    for (let i = 0; i < numSamplePos; i++) {
         pos_newses.push(
             <>
                 <NewsContent title={positive[i].title}
@@ -22,7 +23,7 @@ export const NewsSample = ({positive, negative}) => {
         )
     }
     let neg_newses = []
-    for (let i = 0; i < negative.length; i++) {
+    for (let i = 0; i < numSampleNeg; i++) {
         neg_newses.push(
             <>
                 <NewsContent title={negative[i].title}
@@ -69,6 +70,4 @@ NewsSample.propTypes = {
 };
 
 NewsSample.defaultProps = {
-    positive: sample_data.positive,
-    negative: sample_data.negative
 };

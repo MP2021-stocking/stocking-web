@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {NewsAnalysis} from './NewsAnalysis';
+import NewsAnalysis from './NewsAnalysis';
 
 export default {
     title: '2.molecules/Main/NewsAnalysis',

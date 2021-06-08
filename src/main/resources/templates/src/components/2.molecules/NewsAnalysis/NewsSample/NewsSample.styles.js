@@ -15,6 +15,11 @@ const StyledNewsSample = styled.div`
     height: 800px;
     background-color: #9fdffa;
   }
+  .div-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
   .div-header {
     display: flex;

@@ -1,12 +1,10 @@
 import React from 'react';
 import StyledNewsContent from "./NewsContent.styles";
-import {Text} from "../../../../1.atoms/Text/Text";
 import {string} from "prop-types";
-import sample_data from "../sample-news.json";
+import {Text} from "../../../../1.atoms/Text/Text";
 import {MultiLineText} from "../../../../1.atoms/Text/MultiLineText/MultiLineText";
 
 export const NewsContent = ({title, date, content}) => {
-    console.log(title)
     return (
         <StyledNewsContent>
             <div className={"title"}>
@@ -26,8 +24,4 @@ NewsContent.propTypes = {
     content: string
 };
 
-NewsContent.defaultProps = {
-    title: sample_data.positive[0].title,
-    date: sample_data.positive[0].date,
-    content: sample_data.positive[0].content
-};
+NewsContent.defaultProps = {};

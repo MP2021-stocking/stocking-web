@@ -1,10 +1,13 @@
 import React from 'react';
 import StyledStockChart from "./StockChart.styles";
+import {withRouter} from "react-router-dom";
 import ReactHighcharts from 'react-highcharts/ReactHighstock.src'
 import moment from 'moment'
-import sample_data from "./sample_chart_data.json"
+import {getChartData} from "../../../../_actions/action";
 
-export const StockChart = () => {
+function StockChart() {
+    let chartData = getChartData().payload;
+
     const options = {style: 'currency', currency: 'KRW'};
     const numberFormat = new Intl.NumberFormat('ko-KR', options);
 
@@ -30,7 +33,7 @@ export const StockChart = () => {
         },
         chart: {
             height: 400,
-            width:700
+            width: 700
         },
         credits: {
             enabled: false
@@ -41,7 +44,7 @@ export const StockChart = () => {
         series: [{
             name: 'Price',
             type: 'spline',
-            data: sample_data,
+            data: chartData,
             tooltip: {
                 valueDecimals: 2
             }
@@ -51,8 +54,10 @@ export const StockChart = () => {
     return (<StyledStockChart>
         <ReactHighcharts config={configPrice}/>
     </StyledStockChart>);
-};
+}
 
 StockChart.propTypes = {};
 
 StockChart.defaultProps = {};
+
+export default withRouter(StockChart);
