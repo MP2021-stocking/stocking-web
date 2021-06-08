@@ -1,15 +1,24 @@
 import {
-    GET_ALL_STOCK_INFO, GET_ALL_NEWS, GET_STOCK_INFO, GET_CHART_DATA
+    GET_ALL_STOCK_INFO, GET_ALL_NEWS, GET_STOCK_INFO, GET_CHART_DATA, GET_FAV_STOCK_INFO
 } from './types';
 
 import news_data from "./news_data.json"
 import stock_data from "./stock_data.json"
 import chart_data from "./chart_data.json"
 
+let fav_stock_data = []
+
 export function getAllStock() {
     return {
         type: GET_ALL_STOCK_INFO,
         payload: stock_data
+    }
+}
+
+export function getFavStock() {
+    return {
+        type: GET_FAV_STOCK_INFO,
+        payload: fav_stock_data
     }
 }
 

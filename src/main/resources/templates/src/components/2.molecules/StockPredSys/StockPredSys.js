@@ -8,7 +8,7 @@ import {SlideMenu} from "../../1.atoms/SlideMenu/SlideMenu";
 import {SearchBar} from "../../1.atoms/InputText/InputText";
 import {Shape} from "../../1.atoms/Shape/Shape";
 import {items} from "../../1.atoms/Button/Button-data.json";
-import {getAllStock} from "../../../_actions/action";
+import {getAllStock, getFavStock} from "../../../_actions/action";
 
 
 function StockPredSys({onChange}) {
@@ -23,6 +23,7 @@ function StockPredSys({onChange}) {
 
     const [stockInfos, setStockInfos] = useState(stock_infos);
     const [filter, setFilter] = useState("");
+    const [radioFlag, setRadioFlag] = useState(0);
 
     const onFilterHandler = (event) => setFilter(event.currentTarget.value)
     const searchKeyHandler = (event) => {
@@ -30,6 +31,14 @@ function StockPredSys({onChange}) {
             console.log("enter Key!")
             applyFilter()
         }
+    }
+    const onRadioHandler = (e) => {
+        if (e.target.id === "r2") {
+            setRadioFlag(1)
+        } else if (e.target.id === "r1") {
+            setRadioFlag(0)
+        }
+        toggleFavorite()
     }
     const applyFilter = () => {
         if (filter !== "") {
@@ -47,6 +56,13 @@ function StockPredSys({onChange}) {
             setStockInfos(stock_infos)
         }
     }
+    const toggleFavorite = () => {
+        if (radioFlag === 1) {
+            setStockInfos(stock_infos)
+        } else {
+            setStockInfos(getFavStock().payload)
+        }
+    }
 
     return (
         <StyledStockPredSys>
@@ -55,7 +71,7 @@ function StockPredSys({onChange}) {
                 <Button label={3} items={items} data={stockData} setStockInfos={setStockInfos} onChange={onChange}/>
             </div>
             <div className={"stock-pred-box"}>
-                <SlideMenu/>
+                <SlideMenu flag={radioFlag} handler={onRadioHandler}/>
                 <div className={"search-bar"}>
                     <SearchBar value={filter} text={"종목 입력"} onKeyPress={searchKeyHandler} onChange={onFilterHandler}
                                onClick={applyFilter}/>
