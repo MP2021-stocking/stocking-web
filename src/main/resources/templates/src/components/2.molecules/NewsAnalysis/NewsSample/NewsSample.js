@@ -69,5 +69,4 @@ NewsSample.propTypes = {
     negative: array
 };
 
-NewsSample.defaultProps = {
-};
+NewsSample.defaultProps = {};

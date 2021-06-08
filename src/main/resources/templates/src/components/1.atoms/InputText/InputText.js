@@ -17,9 +17,9 @@ InputText.defaultProps = {
     placeholder: "hello world!!!"
 };
 
-export const SearchBar = ({value, text, onChange}) => {
+export const SearchBar = ({value, text, onChange, onClick, onKeyPress}) => {
     return (<StyledSearchBar>
-        <input type="text" value={value} placeholder={text} onChange={onChange}/>
-        <SearchButton text={"검색"}/>
+        <input type="text" onKeyPress={onKeyPress} value={value} placeholder={text} onChange={onChange}/>
+        <SearchButton text={"검색"} onClick={onClick}/>
     </StyledSearchBar>);
 };

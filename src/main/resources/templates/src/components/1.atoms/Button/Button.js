@@ -115,9 +115,9 @@ ButtonIcon.propTypes = {
 
 export default Button;
 
-export const SearchButton = ({text}) => {
+export const SearchButton = ({text, onClick}) => {
     return (
-        <StyledSearchButton>
+        <StyledSearchButton onClick={onClick}>
             {text}
         </StyledSearchButton>
     );

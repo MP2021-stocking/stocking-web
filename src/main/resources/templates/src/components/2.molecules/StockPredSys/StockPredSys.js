@@ -18,13 +18,35 @@ function StockPredSys({onChange}) {
     let stock_infos = []
     for (let i = 0; i < stockData.length; i++) {
         stock_infos.push(<StockInfoText name={stockData[i].name} open={stockData[i].open} change={stockData[i].change}
-                                   pred={stockData[i].pred} weight={400} size={"16px"} onChange={onChange}/>)
+                                        pred={stockData[i].pred} weight={400} size={"16px"} onChange={onChange}/>)
     }
 
     const [stockInfos, setStockInfos] = useState(stock_infos);
     const [filter, setFilter] = useState("");
 
     const onFilterHandler = (event) => setFilter(event.currentTarget.value)
+    const searchKeyHandler = (event) => {
+        if (event.key === "Enter") {
+            console.log("enter Key!")
+            applyFilter()
+        }
+    }
+    const applyFilter = () => {
+        if (filter !== "") {
+            let filtered_stock_infos = []
+            for (let i = 0; i < stockData.length; i++) {
+                if (stockData[i].name.includes(filter)) {
+                    filtered_stock_infos.push(<StockInfoText name={stockData[i].name} open={stockData[i].open}
+                                                             change={stockData[i].change}
+                                                             pred={stockData[i].pred} weight={400} size={"16px"}
+                                                             onChange={onChange}/>)
+                }
+            }
+            setStockInfos(filtered_stock_infos)
+        } else {
+            setStockInfos(stock_infos)
+        }
+    }
 
     return (
         <StyledStockPredSys>
@@ -35,7 +57,8 @@ function StockPredSys({onChange}) {
             <div className={"stock-pred-box"}>
                 <SlideMenu/>
                 <div className={"search-bar"}>
-                    <SearchBar value={filter} text={"종목 입력"} onChange={onFilterHandler}/>
+                    <SearchBar value={filter} text={"종목 입력"} onKeyPress={searchKeyHandler} onChange={onFilterHandler}
+                               onClick={applyFilter}/>
                 </div>
                 <div className={"stock-list"}>
                     <StockInfoText name={"종목명"} open={"현재가"} change={"전일대비"} pred={"추천"} weight={500} size={"22px"}/>
