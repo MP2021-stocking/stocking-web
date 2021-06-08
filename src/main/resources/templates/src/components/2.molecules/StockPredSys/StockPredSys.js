@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import StyledStockPredSys from "../StockPredSys/StockPredSys.styles";
 import {withRouter} from "react-router-dom";
 import {Text} from "../../1.atoms/Text/Text";
-import {StockInfoText} from "../../1.atoms/Text/StockInfoText/StockInfoText";
+import StockInfoText from "../../1.atoms/Text/StockInfoText/StockInfoText";
 import Button from "../../1.atoms/Button/Button";
 import {SlideMenu} from "../../1.atoms/SlideMenu/SlideMenu";
 import {SearchBar} from "../../1.atoms/InputText/InputText";
@@ -11,24 +11,25 @@ import {items} from "../../1.atoms/Button/Button-data.json";
 import {getAllStock} from "../../../_actions/action";
 
 
-function StockPredSys() {
+function StockPredSys({onChange}) {
     let stockData = getAllStock().payload;
 
-    let stock_infos = []
-    for (let i = 0; i < stockData.length; i++) {
-        stock_infos.push(<StockInfoText name={stockData[i].name}
-                                        open={stockData[i].open}
-                                        change={stockData[i].change}
-                                        pred={stockData[i].pred}
-                                        weight={400}
-                                        size={"16px"}/>)
+    function getStockInfos(data, onChange) {
+        let result = []
+        for (let i = 0; i < data.length; i++) {
+            result.push(<StockInfoText name={data[i].name} open={data[i].open} change={data[i].change}
+                                       pred={data[i].pred} weight={400} size={"16px"} onChange={onChange}/>)
+        }
+        return result;
     }
+
+    const [stockInfos, setStockInfos] = useState(getStockInfos(stockData, onChange));
 
     return (
         <StyledStockPredSys>
             <Text text={"종목 예측 시스템"} weight={600} size={"30px"}/>
             <div className={"filter-btn"}>
-                <Button label={"정렬: 추천순"} items={items}/>
+                <Button label={3} items={items} data={stockData} setStockInfos={setStockInfos}/>
             </div>
             <div className={"stock-pred-box"}>
                 <SlideMenu/>
@@ -39,7 +40,7 @@ function StockPredSys() {
                     <StockInfoText name={"종목명"} open={"현재가"} change={"전일대비"} pred={"추천"} weight={500} size={"22px"}/>
                     <Shape/>
                     <div className={"stocks"}>
-                        {stock_infos}
+                        {stockInfos}
                     </div>
                 </div>
             </div>

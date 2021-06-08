@@ -1,7 +1,8 @@
 import {
     GET_ALL_NEWS,
     GET_ALL_STOCK_INFO,
-    GET_STOCK_INFO
+    GET_STOCK_INFO,
+    GET_CHART_DATA
 } from '../_actions/types';
 
 export default function (state = {}, action) {
@@ -14,6 +15,9 @@ export default function (state = {}, action) {
             break;
         case GET_STOCK_INFO:
             return { ...state, stockInfo: action.payload }
+            break;
+        case GET_CHART_DATA:
+            return { ...state, data: action.payload }
             break;
         default:
             return state;

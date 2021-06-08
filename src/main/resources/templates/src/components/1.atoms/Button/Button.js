@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import {func, node, string} from "prop-types";
 import StyledButton, {StyledLinkButton, StyledToggle, StyledSearchButton} from "./Button.styles";
 import {Dropdown} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import StockInfoText from "../Text/StockInfoText/StockInfoText";
 
 const Icons = {};
 
@@ -17,32 +18,67 @@ const CustomToggle = React.forwardRef(({children, onClick}, ref) => (
     </StyledToggle>
 ));
 
-const Button = ({label, href, icon, onClick, variant, items}) => {
-    if (!href && !items)
+const Button = ({label, href, icon, onClick, variant, items, ...props}) => {
+    const [labelValue, setLabelValue] = useState(label);
+
+    const setDropdownValue = (e) => {
+        setLabelValue(e)
+        changeOrder(props.data, e)
+    }
+
+    function getStockInfos(data, onChange) {
+        let result = []
+        for (let i = 0; i < data.length; i++) {
+            result.push(<StockInfoText name={data[i].name} open={data[i].open} change={data[i].change}
+                                       pred={data[i].pred} weight={400} size={"16px"} onChange={onChange}/>)
+        }
+        return result;
+    }
+
+    function changeOrder(data, flag) {
+        let res = data
+        if (flag === "0") {
+            res = res.sort((a, b) => (a.name > b.name) ? 1 : -1)
+        } else if (flag === "1") {
+            res = res.sort((a, b) => (a.close < b.close) ? 1 : -1)
+        } else if (flag === "2") {
+            res = res.sort((a, b) => (a.change < b.change) ? 1 : -1)
+        } else if (flag === "3") {
+            res = res.sort((a, b) => (a.pred < b.pred) ? 1 : -1)
+        }
+        props.setStockInfos(getStockInfos(res))
+    }
+
+    if (!href && !items) {
         return (
             <StyledButton onClick={onClick} variant={variant}>
                 {icon && <ButtonIcon name={icon}/>}
                 {label}
             </StyledButton>
-        ); else if (href)
+        );
+    } else if (href) {
         return (
             <StyledLinkButton href={href} variant={variant}>
                 {icon && <ButtonIcon name={icon}/>}
                 {label}
             </StyledLinkButton>
         );
-    return (
-        <Dropdown>
-            <Dropdown.Toggle as={CustomToggle}>
-              {label}
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              {items.titles.map(title =>(
-                  <Dropdown.Item>{title}</Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-        </Dropdown>);
+    } else if (items) {
+        let itemTitles = []
+        for (let i = 0; i < items.titles.length; i++) {
+            itemTitles.push(<Dropdown.Item eventKey={i}>{items.titles[i]}</Dropdown.Item>)
+        }
+        return (
+            <Dropdown
+                onSelect={setDropdownValue}>
+                <Dropdown.Toggle as={CustomToggle}>
+                    정렬 : {items.titles[labelValue]}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                    {itemTitles}
+                </Dropdown.Menu>
+            </Dropdown>);
+    }
 };
 
 // Expected prop values
@@ -80,9 +116,9 @@ ButtonIcon.propTypes = {
 export default Button;
 
 export const SearchButton = ({text}) => {
-    return(
-    <StyledSearchButton>
-        {text}
-    </StyledSearchButton>
+    return (
+        <StyledSearchButton>
+            {text}
+        </StyledSearchButton>
     );
 };

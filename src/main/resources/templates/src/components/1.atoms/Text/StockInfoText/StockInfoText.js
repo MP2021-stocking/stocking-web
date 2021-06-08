@@ -2,8 +2,14 @@ import {number, string} from "prop-types";
 import React from "react";
 import {Text} from "../Text";
 import StyledStockInfoText from "./StockInfoText.styles";
+import {withRouter} from "react-router-dom";
 
-export const StockInfoText = ({name, open, change, pred, size, weight}) => {
+function StockInfoText({name, open, change, pred, size, weight, onChange}) {
+    const setStockInfo = () =>{
+        if (name !== "종목명") {
+            onChange(name)
+        }
+    }
 
     function format_currency(text) {
         if (typeof (text) === "number") {
@@ -21,14 +27,14 @@ export const StockInfoText = ({name, open, change, pred, size, weight}) => {
         }
     }
 
-    return (<StyledStockInfoText>
+    return (<StyledStockInfoText onClick={setStockInfo}>
             <div><Text text={name} weight={weight} size={size}/></div>
             <div><Text text={format_currency(open)} weight={weight} size={size}/></div>
             <div><Text text={format_currency(change)} weight={weight} size={size}/></div>
             <div><Text text={pred} weight={weight} size={size} color={pred_color(pred)}/></div>
         </StyledStockInfoText>
     );
-};
+}
 
 StockInfoText.propTypes = {
     text: string,
@@ -39,3 +45,5 @@ StockInfoText.defaultProps = {
     text: "Hello World",
     weight: 500,
 };
+
+export default withRouter(StockInfoText);
