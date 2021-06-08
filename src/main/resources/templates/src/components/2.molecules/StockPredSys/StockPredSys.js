@@ -60,7 +60,15 @@ function StockPredSys({onChange}) {
         if (radioFlag === 1) {
             setStockInfos(stock_infos)
         } else {
-            setStockInfos(getFavStock().payload)
+            let fav_stock_infos = []
+            let favStockData = getFavStock().payload
+            for (let i = 0; i < favStockData.length; i++) {
+                fav_stock_infos.push(<StockInfoText name={favStockData[i].name} open={favStockData[i].open}
+                                                    change={favStockData[i].change}
+                                                    pred={favStockData[i].pred} weight={400} size={"16px"}
+                                                    onChange={onChange}/>)
+            }
+            setStockInfos(fav_stock_infos)
         }
     }
 

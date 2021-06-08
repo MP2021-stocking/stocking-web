@@ -5,11 +5,20 @@ import {Text} from "../../1.atoms/Text/Text";
 import {StockPriceMain} from "../../1.atoms/Text/StockPriceMain/StockPriceMain";
 import {StockPriceDetail} from "../../1.atoms/Text/StockPriceDetail/StockPriceDetail";
 import StockChart from "./StockChart/StockChart";
-import {getStockInfo} from "../../../_actions/action";
+import {getStockInfo, addFavStock, deleteFavStock, checkFavStock} from "../../../_actions/action";
 import Button from "../../1.atoms/Button/Button";
 
 function StockInfo({name}) {
     let stockData = getStockInfo(name).payload;
+    let favBtn = initFavBtn(name);
+
+    function initFavBtn(name) {
+        if (checkFavStock(name).payload === 0) {
+            return <Button onClick={addFavorite} label={"Add Favorite"} variant={"secondary"}/>
+        } else {
+            return <Button onClick={deleteFavorite} label={"Delete Favorite"} variant={"secondary"}/>
+        }
+    }
 
     function format_number(text) {
         if (typeof (text) === "number") {
@@ -17,6 +26,16 @@ function StockInfo({name}) {
         } else {
             return text
         }
+    }
+
+    function addFavorite() {
+        console.log(addFavStock(stockData).payload)
+        favBtn = initFavBtn(name);
+    }
+
+    function deleteFavorite() {
+        console.log(deleteFavStock(stockData).payload)
+        favBtn = initFavBtn(name);
     }
 
     let gapPercent = Math.round(stockData.change / stockData.open * 10000) / 100;
@@ -29,7 +48,7 @@ function StockInfo({name}) {
                     {stockData.name}
                 </div>
                 <div className={"add-favorite"}>
-                    <Button label={"Add Favorite"} variant={"secondary"}/>
+                    {favBtn}
                 </div>
             </div>
             <div className={"stock-price-table"}>
