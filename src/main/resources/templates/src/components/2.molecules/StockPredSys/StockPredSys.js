@@ -36,7 +36,7 @@ function StockPredSys() {
                     <SearchBar text={"종목 입력"}/>
                 </div>
                 <div className={"stock-list"}>
-                    <StockInfoText name={"종목명"} open={"현재가"} change={"전일대비"} pred={"예측"} weight={500} size={"22px"}/>
+                    <StockInfoText name={"종목명"} open={"현재가"} change={"전일대비"} pred={"추천"} weight={500} size={"22px"}/>
                     <Shape/>
                     <div className={"stocks"}>
                         {stock_infos}
