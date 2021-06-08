@@ -6,6 +6,7 @@ import {StockPriceMain} from "../../1.atoms/Text/StockPriceMain/StockPriceMain";
 import {StockPriceDetail} from "../../1.atoms/Text/StockPriceDetail/StockPriceDetail";
 import StockChart from "./StockChart/StockChart";
 import {getStockInfo} from "../../../_actions/action";
+import Button from "../../1.atoms/Button/Button";
 
 function StockInfo({name}) {
     let stockData = getStockInfo(name).payload;
@@ -23,7 +24,14 @@ function StockInfo({name}) {
     return (<StyledStockInfo>
         <Text text={"시세 요약표"} weight={600} size={"30px"}/>
         <div className={"stock-info-table"}>
-            <div className={"stock-name"}>{stockData.name}</div>
+            <div className="info-top">
+                <div className={"stock-name"}>
+                    {stockData.name}
+                </div>
+                <div className={"add-favorite"}>
+                    <Button label={"Add Favorite"} variant={"secondary"}/>
+                </div>
+            </div>
             <div className={"stock-price-table"}>
                 <div className={"table-top"}>
                     <StockPriceMain

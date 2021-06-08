@@ -12,6 +12,12 @@ const StyledStockInfo = styled.div`
     margin-top: 42px;
   }
 
+  .info-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
   .stock-name {
     padding: 10px;
     font-family: S-Core, serif;
