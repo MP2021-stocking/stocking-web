@@ -10,13 +10,12 @@ import Button from "../../1.atoms/Button/Button";
 
 function StockInfo({name}) {
     let stockData = getStockInfo(name).payload;
-    let favBtn = initFavBtn(name);
 
-    function initFavBtn(name) {
+    function onFavBtnClick() {
         if (checkFavStock(name).payload === 0) {
-            return <Button onClick={addFavorite} label={"Add Favorite"} variant={"secondary"}/>
+            console.log(addFavStock(stockData).payload)
         } else {
-            return <Button onClick={deleteFavorite} label={"Delete Favorite"} variant={"secondary"}/>
+            console.log(deleteFavStock(stockData).payload)
         }
     }
 
@@ -26,16 +25,6 @@ function StockInfo({name}) {
         } else {
             return text
         }
-    }
-
-    function addFavorite() {
-        console.log(addFavStock(stockData).payload)
-        favBtn = initFavBtn(name);
-    }
-
-    function deleteFavorite() {
-        console.log(deleteFavStock(stockData).payload)
-        favBtn = initFavBtn(name);
     }
 
     let gapPercent = Math.round(stockData.change / stockData.open * 10000) / 100;
@@ -48,7 +37,8 @@ function StockInfo({name}) {
                     {stockData.name}
                 </div>
                 <div className={"add-favorite"}>
-                    {favBtn}
+                    <Button onClick={onFavBtnClick} label={(checkFavStock(name).payload === 0) ? "Favorite" : "Remove"}
+                            variant={"secondary"}/>
                 </div>
             </div>
             <div className={"stock-price-table"}>
