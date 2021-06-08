@@ -13,28 +13,29 @@ import {getAllStock} from "../../../_actions/action";
 
 function StockPredSys({onChange}) {
     let stockData = getAllStock().payload;
+    stockData = stockData.sort((a, b) => (a.pred < b.pred) ? 1 : -1)
 
-    function getStockInfos(data, onChange) {
-        let result = []
-        for (let i = 0; i < data.length; i++) {
-            result.push(<StockInfoText name={data[i].name} open={data[i].open} change={data[i].change}
-                                       pred={data[i].pred} weight={400} size={"16px"} onChange={onChange}/>)
-        }
-        return result;
+    let stock_infos = []
+    for (let i = 0; i < stockData.length; i++) {
+        stock_infos.push(<StockInfoText name={stockData[i].name} open={stockData[i].open} change={stockData[i].change}
+                                   pred={stockData[i].pred} weight={400} size={"16px"} onChange={onChange}/>)
     }
 
-    const [stockInfos, setStockInfos] = useState(getStockInfos(stockData, onChange));
+    const [stockInfos, setStockInfos] = useState(stock_infos);
+    const [filter, setFilter] = useState("");
+
+    const onFilterHandler = (event) => setFilter(event.currentTarget.value)
 
     return (
         <StyledStockPredSys>
             <Text text={"종목 예측 시스템"} weight={600} size={"30px"}/>
             <div className={"filter-btn"}>
-                <Button label={3} items={items} data={stockData} setStockInfos={setStockInfos}/>
+                <Button label={3} items={items} data={stockData} setStockInfos={setStockInfos} onChange={onChange}/>
             </div>
             <div className={"stock-pred-box"}>
                 <SlideMenu/>
                 <div className={"search-bar"}>
-                    <SearchBar text={"종목 입력"}/>
+                    <SearchBar value={filter} text={"종목 입력"} onChange={onFilterHandler}/>
                 </div>
                 <div className={"stock-list"}>
                     <StockInfoText name={"종목명"} open={"현재가"} change={"전일대비"} pred={"추천"} weight={500} size={"22px"}/>

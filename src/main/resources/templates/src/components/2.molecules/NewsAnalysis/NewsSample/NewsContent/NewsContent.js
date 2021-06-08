@@ -9,7 +9,7 @@ export const NewsContent = ({title, date, content}) => {
         <StyledNewsContent>
             <div className={"title"}>
                 <Text text={title} weight={700} size={"18px"}/>
-                <Text text={"게시일: " + date} weight={600} size={"12px"} color={"#666a6a"}/>
+                <Text className={"date"} text={"게시일: " + date} weight={600} size={"12px"} color={"#666a6a"}/>
             </div>
             <div>
                 <MultiLineText text={content} size={"14px"}/>

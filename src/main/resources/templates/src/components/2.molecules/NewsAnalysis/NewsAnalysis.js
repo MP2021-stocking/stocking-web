@@ -2,8 +2,6 @@ import React from 'react';
 import StyledNewsAnalysis from "./NewsAnalysis.styles";
 import {withRouter} from "react-router-dom";
 import {Text} from "../../1.atoms/Text/Text";
-import Button from "../../1.atoms/Button/Button";
-import {items} from "../../1.atoms/Button/Button-data.json";
 import {NewsSample} from "./NewsSample/NewsSample";
 import {NewsSummary} from "./NewsSummary/NewsSummary";
 import {getAllNews} from "../../../_actions/action";
@@ -23,7 +21,6 @@ function NewsAnalysis() {
                 />
             </div>
             <div className={"news-bottom"}>
-                <Button label={"정렬: 추천순"} items={items}/>
                 <NewsSample
                     positive={newsData.positive}
                     negative={newsData.negative}/>

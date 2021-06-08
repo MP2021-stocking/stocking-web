@@ -1,12 +1,12 @@
 import React from 'react';
 import {number, string} from 'prop-types';
 
-export const Text = ({text, weight, size, color, margin}) => {
+export const Text = ({text, weight, size, color, margin, ...props}) => {
     return (<p style={{
         fontFamily: "S-Core", fontWeight: weight, margin: margin,
         fontSize: size, color: color
-    }
-    }>{text}</p>);
+    }}
+               {...props}>{text}</p>);
 };
 
 Text.propTypes = {

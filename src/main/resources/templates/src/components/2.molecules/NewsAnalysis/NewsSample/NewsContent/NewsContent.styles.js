@@ -9,6 +9,11 @@ const StyledNewsContent = styled.div`
     margin-bottom: 30px;
   }
 
+  .date {
+    width: 180px;
+    text-align: right;
+  }
+
 `;
 
 export default StyledNewsContent;
