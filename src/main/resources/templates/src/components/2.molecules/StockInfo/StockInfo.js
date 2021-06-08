@@ -40,7 +40,7 @@ function StockInfo({name}) {
                 </div>
             </div>
             <div className={"chart"}>
-                <StockChart/>
+                <StockChart name={name}/>
             </div>
         </div>
     </StyledStockInfo>);

@@ -21,7 +21,6 @@ export function getAllNews() {
 }
 
 export function getStockInfo(name) {
-    console.log("Hell?")
     for (let i = 0; i < stock_data.length; i++) {
         if (stock_data[i].name === name) {
             return {
@@ -35,6 +34,6 @@ export function getStockInfo(name) {
 export function getChartData(name) {
     return {
         type: GET_CHART_DATA,
-        payload: chart_data
+        payload: chart_data[name]
     }
 }

@@ -5,8 +5,8 @@ import ReactHighcharts from 'react-highcharts/ReactHighstock.src'
 import moment from 'moment'
 import {getChartData} from "../../../../_actions/action";
 
-function StockChart() {
-    let chartData = getChartData().payload;
+function StockChart({name}) {
+    let chartData = getChartData(name).payload;
 
     const options = {style: 'currency', currency: 'KRW'};
     const numberFormat = new Intl.NumberFormat('ko-KR', options);
