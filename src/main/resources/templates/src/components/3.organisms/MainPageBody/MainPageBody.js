@@ -14,7 +14,7 @@ function MainPageBody() {
             <StockInfo name={stockName}/>
         </div>
         <div className={"news-body"}>
-            <NewsAnalysis/>
+            <NewsAnalysis name={stockName}/>
         </div>
     </StyledMainPageBody>);
 }

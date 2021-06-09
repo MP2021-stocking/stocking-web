@@ -4,9 +4,8 @@ const StyledNewsSample = styled.div`
   margin-top: 40px;
   display: flex;
 
+  
   .positive-body {
-    width: 680px;
-    height: 800px;
     background-color: #ffe2e2;
   }
   .plus-btn{
@@ -14,11 +13,11 @@ const StyledNewsSample = styled.div`
   }
 
   .negative-body {
-    width: 680px;
-    height: 800px;
     background-color: #9fdffa;
   }
   .div-body{
+    width: 680px;
+    height: 1000px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -38,6 +37,8 @@ const StyledNewsSample = styled.div`
       }
     }
   }
+
+
 `;
 
 export default StyledNewsSample;

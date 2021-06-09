@@ -11,6 +11,7 @@ import {
 } from './types';
 
 import news_data from "./news_data.json"
+import news_data2 from "./information.json"
 import stock_data from "./stock_data.json"
 import header_data from "./header_data.json"
 import chart_data from "./chart_data.json"
@@ -94,6 +95,18 @@ export function getAllNews() {
     return {
         type: GET_ALL_NEWS,
         payload: news_data
+    }
+}
+
+export function getNews(name) {
+    for (let i = 0; i < news_data2.length; i++) {
+        if (news_data2[i].name === name)
+            return {
+                payload: news_data2[i]
+            }
+    }
+    return {
+        payload: news_data2[0]
     }
 }
 
