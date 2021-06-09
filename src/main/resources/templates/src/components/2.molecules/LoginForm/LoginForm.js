@@ -1,11 +1,16 @@
 import React from 'react';
+import StyledLoginForm from "./LoginForm.styles";
 import {InputText} from "../../1.atoms/InputText/InputText";
 import Button from "../../1.atoms/Button/Button";
 import {Shape} from "../../1.atoms/Shape/Shape";
 import {Link} from "../../1.atoms/Link/Link";
-import StyledLoginForm from "./LoginForm.styles";
+import {withRouter} from "react-router-dom";
 
-export const LoginForm = () => {
+function LoginForm(props) {
+    function toMain() {
+        props.history.push("/main")
+    }
+
     return (
         <>
             <StyledLoginForm>
@@ -14,19 +19,21 @@ export const LoginForm = () => {
                 <div><InputText placeholder={"비밀번호"} type={"password"}/></div>
                 <br/>
                 <br/>
-                <div><Button label={"로그인"}/></div>
+                <div><Button onClick={toMain} label={"로그인"}/></div>
                 <br/>
                 <br/>
                 <div><Shape/></div>
                 <div>
-                    <div style={{float: "left"}}><Link label={"아이디/비밀번호 찾기"} /></div>
-                    <div style={{float: "right"}}><Link label={"회원 가입"} /></div>
+                    <div style={{float: "left"}}><Link label={"아이디/비밀번호 찾기"}/></div>
+                    <div style={{float: "right"}}><Link href={'/signup'} label={"회원 가입"}/></div>
                 </div>
             </StyledLoginForm>
         </>
     );
-};
+}
 
 LoginForm.propTypes = {};
 
 LoginForm.defaultProps = {};
+
+export default withRouter(LoginForm);

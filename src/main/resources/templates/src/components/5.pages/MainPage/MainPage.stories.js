@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {MainPage} from './MainPage';
+import MainPage from './MainPage';
 
 export default {
     title: '5.pages/MainPage',

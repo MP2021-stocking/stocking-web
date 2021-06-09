@@ -42,7 +42,7 @@ export const NewsSample = ({positive, negative}) => {
                         <img src={posIcon} alt="posIcon"/>
                         <Text text={"Positive News"}/>
                     </div>
-                    <Text text={"+"}/>
+                    <Text className={"plus-btn"} text={"+"}/>
                 </div>
                 <div className={"positive-body div-body"}>
                     {pos_newses}
@@ -54,7 +54,7 @@ export const NewsSample = ({positive, negative}) => {
                         <img src={negIcon} alt="negIcon"/>
                         <Text text={"Negative News"}/>
                     </div>
-                    <Text text={"+"}/>
+                    <Text className={"plus-btn"} text={"+"}/>
                 </div>
                 <div className={"negative-body div-body"}>
                     {neg_newses}

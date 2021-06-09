@@ -1,3 +1,4 @@
+export const GET_HEADER_DATA = "get_header_data";
 export const GET_STOCK_INFO = "get_stock_info";
 export const GET_FAV_STOCK_INFO = "get_fav_stock_info";
 export const CHECK_FAV_STOCK_INFO = "check_fav_stock_info";

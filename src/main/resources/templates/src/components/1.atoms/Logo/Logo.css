@@ -1,7 +1,8 @@
 .logo-icon--small {
-    padding : 10px;
-    height: 40px;
+    padding: 10px;
+    height: 60px;
     pointer-events: none;
+    cursor: pointer;
 }
 
 .logo-icon--regular {

@@ -1,21 +1,24 @@
 import React from 'react';
-import {Header} from "../../3.organisms/Header/Header"
-import {items_login} from "./SignupSuccessPage-data.json"
-import {Footer} from "../../3.organisms/Footer/Footer";
-import {SignupSuccess} from "../../2.molecules/SignupSuccess/SignupSuccess";
 import StyledSignupSuccessPage from "./SignupSuccessPage.styles";
+import SignupSuccess from "../../2.molecules/SignupSuccess/SignupSuccess";
+import Header from "../../3.organisms/Header/Header"
+import {Footer} from "../../3.organisms/Footer/Footer";
+import {getHeaderData} from "../../../_actions/action";
+import {withRouter} from "react-router-dom";
 
-export const SignupSuccessPage = () => {
+function SignupSuccessPage() {
     return (<>
         <StyledSignupSuccessPage/>
-            <Header items1={[]} items2={items_login}/>
-            <div className={"article"}>
-                <SignupSuccess/>
-            </div>
-            <Footer/>
+        <Header logoLink={'/'} items1={[]} items2={getHeaderData().payload.items_login}/>
+        <div className={"article"}>
+            <SignupSuccess/>
+        </div>
+        <Footer/>
     </>);
-};
+}
 
 SignupSuccessPage.propTypes = {};
 
 SignupSuccessPage.defaultProps = {};
+
+export default withRouter(SignupSuccessPage);

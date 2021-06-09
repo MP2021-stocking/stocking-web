@@ -1,16 +1,25 @@
 import React from 'react';
 import {string} from 'prop-types';
 import './Logo.css';
-
 import IconLogo from "../../0.assets/Logo.svg"
+import {withRouter} from "react-router-dom";
 
-const Icons = {
-    "Logo": IconLogo,
-};
 
-export const Logo = ({icon, size}) => {
-    return (<LogoIcon name={icon} size={size} />);
-};
+function Logo({logoLink, size, ...props}) {
+    let logoPointerStyle = (logoLink !== null) ? "pointer" : "default"
+
+    function logoOnClick() {
+        if (logoLink !== null) {
+            props.history.push(logoLink)
+        }
+    }
+
+    return (<div style={{cursor: logoPointerStyle}} onClick={logoOnClick}>
+        <img src={IconLogo}
+             className={`logo-icon--${size}`}
+             alt="logo"/>
+    </div>);
+}
 
 Logo.propTypes = {
     icon: string,
@@ -18,20 +27,7 @@ Logo.propTypes = {
 };
 
 Logo.defaultProps = {
-    icon: "Logo",
     size: "small"
 };
 
-const LogoIcon = ({name, size}) => {
-    if (Icons[name] === undefined) return null;
-
-    const Icon = Icons[name];
-    return (
-        <img src={Icon} className={`logo-icon--${size}`}  alt="logo"/>
-    );
-};
-
-LogoIcon.propTypes = {
-    name: string.isRequired,
-    size: string
-};
+export default withRouter(Logo);

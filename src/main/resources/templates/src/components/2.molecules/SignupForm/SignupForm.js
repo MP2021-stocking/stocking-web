@@ -1,12 +1,25 @@
-import React from 'react';
-
+import React, {useState} from 'react';
+import StyledSignupForm from "./SignupForm.styles";
+import {withRouter} from "react-router-dom";
 import Button from "../../1.atoms/Button/Button";
-import {Logo} from "../../1.atoms/Logo/Logo";
+import Logo from "../../1.atoms/Logo/Logo";
 import {Text} from "../../1.atoms/Text/Text";
 import {UnderLineInput} from "../../1.atoms/InputText/UnderLineInput/UnderLineInput";
-import StyledSignupForm from "./SignupForm.styles";
+import {setUserData} from "../../../_actions/action";
 
-export const SignupForm = () => {
+function SignupForm(props) {
+    const [id, setId] = useState("");
+
+    const onIdHandler = (event) => setId(event.currentTarget.value)
+
+    function signUpBtnClick() {
+        let userData = {
+            id: id
+        }
+        setUserData(userData)
+        props.history.push('/signup_success')
+    }
+
     return (
         <StyledSignupForm>
             <div className={"logo"}>
@@ -16,7 +29,7 @@ export const SignupForm = () => {
             <div className={"form-area"}>
                 <div className={"form id"}>
                     <Text text={"아이디"}/>
-                    <div><UnderLineInput placeholder={"아이디를 입력해주세요"}/></div>
+                    <div><UnderLineInput value={id} onChange={onIdHandler} placeholder={"아이디를 입력해주세요"}/></div>
                 </div>
                 <div className="form passwd">
                     <Text text={"비밀번호"}/>
@@ -56,12 +69,14 @@ export const SignupForm = () => {
                 </div>
 
                 <br/>
-                <div><Button label={"가입하기"}/></div>
+                <div onClick={signUpBtnClick}><Button label={"가입하기"}/></div>
             </div>
         </StyledSignupForm>
     );
-};
+}
 
 SignupForm.propTypes = {};
 
 SignupForm.defaultProps = {};
+
+export default withRouter(SignupForm);

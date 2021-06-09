@@ -1,4 +1,5 @@
 import {
+    GET_HEADER_DATA,
     GET_ALL_STOCK_INFO,
     GET_ALL_NEWS,
     GET_STOCK_INFO,
@@ -11,9 +12,31 @@ import {
 
 import news_data from "./news_data.json"
 import stock_data from "./stock_data.json"
+import header_data from "./header_data.json"
 import chart_data from "./chart_data.json"
 
 let fav_stock_data = []
+let userData;
+
+export function getHeaderData() {
+    return {
+        type: GET_HEADER_DATA,
+        payload: header_data
+    }
+}
+
+export function setUserData(data) {
+    userData = data
+    return {
+        payload: userData
+    }
+}
+
+export function getUserData() {
+    return {
+        payload: userData
+    }
+}
 
 export function getAllStock() {
     return {

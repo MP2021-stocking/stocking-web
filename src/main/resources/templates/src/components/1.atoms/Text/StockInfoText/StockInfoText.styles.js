@@ -11,6 +11,7 @@ const StyledStockInfoText = styled.div`
     flex: 1;
     display: flex;
     justify-content: center;
+    cursor: pointer;
   }
 `;
 

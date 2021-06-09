@@ -1,13 +1,15 @@
 import React from 'react';
-
 import StyledSignupSuccess from "./SignupSuccess.styles";
-import {Logo} from "../../1.atoms/Logo/Logo";
+import {withRouter} from "react-router-dom";
+import Logo from "../../1.atoms/Logo/Logo";
+import {getUserData} from "../../../_actions/action";
 
-export const SignupSuccess = () => {
+function SignupSuccess() {
+    let id = getUserData().payload.id
     return (
         <StyledSignupSuccess>
             <div className={"logo"}>
-                <Logo size={"regular"}/>
+                <Logo logoLink={'/'} size={"regular"}/>
             </div>
 
             <div className="p1">
@@ -20,13 +22,15 @@ export const SignupSuccess = () => {
             </div>
 
             <div className="signup-id">
-                <p>가입한 아이디</p>
+                <p>{id}</p>
             </div>
 
         </StyledSignupSuccess>
     );
-};
+}
 
 SignupSuccess.propTypes = {};
 
 SignupSuccess.defaultProps = {};
+
+export default withRouter(SignupSuccess)

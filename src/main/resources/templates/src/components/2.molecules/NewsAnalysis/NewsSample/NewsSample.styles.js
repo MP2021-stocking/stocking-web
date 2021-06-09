@@ -9,6 +9,9 @@ const StyledNewsSample = styled.div`
     height: 800px;
     background-color: #ffe2e2;
   }
+  .plus-btn{
+      cursor: pointer;
+  }
 
   .negative-body {
     width: 680px;
