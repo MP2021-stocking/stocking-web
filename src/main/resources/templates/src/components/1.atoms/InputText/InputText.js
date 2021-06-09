@@ -3,8 +3,8 @@ import {string} from 'prop-types';
 import StyledInputText, {StyledSearchBar} from "./InputText.styles";
 import {SearchButton} from "../Button/Button";
 
-export const InputText = ({type, placeholder}) => {
-    return (<StyledInputText type={type} placeholder={placeholder}/>);
+export const InputText = ({type, placeholder, value, onChange}) => {
+    return (<StyledInputText value={value} onChange={onChange} type={type} placeholder={placeholder}/>);
 };
 
 InputText.propTypes = {

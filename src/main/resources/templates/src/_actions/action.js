@@ -11,12 +11,12 @@ import {
 } from './types';
 
 import news_data from "./news_data.json"
-import news_data2 from "./information.json"
 import stock_data from "./stock_data.json"
 import header_data from "./header_data.json"
 import chart_data from "./chart_data.json"
 
 let fav_stock_data = []
+let allUserData = [];
 let userData;
 
 export function getHeaderData() {
@@ -27,6 +27,7 @@ export function getHeaderData() {
 }
 
 export function setUserData(data) {
+    allUserData.push(data)
     userData = data
     return {
         payload: userData
@@ -36,6 +37,17 @@ export function setUserData(data) {
 export function getUserData() {
     return {
         payload: userData
+    }
+}
+
+export function auth(id) {
+    let isContain = false
+    for (let i = 0; i < allUserData.length; i++) {
+        if (allUserData[i].id === id)
+            isContain = true
+    }
+    return {
+        payload: isContain
     }
 }
 
@@ -99,14 +111,17 @@ export function getAllNews() {
 }
 
 export function getNews(name) {
-    for (let i = 0; i < news_data2.length; i++) {
-        if (news_data2[i].name === name)
+
+    for (let i = 0; i < news_data.length; i++) {
+        if (news_data[i].name === name)
             return {
-                payload: news_data2[i]
+                payload: news_data[i]
             }
     }
+    console.log("No Data with name: " + name)
+    console.log("news_data.length: " + news_data.length)
     return {
-        payload: news_data2[0]
+        payload: news_data[0]
     }
 }
 

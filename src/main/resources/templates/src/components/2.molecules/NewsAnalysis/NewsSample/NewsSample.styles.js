@@ -4,18 +4,20 @@ const StyledNewsSample = styled.div`
   margin-top: 40px;
   display: flex;
 
-  
+
   .positive-body {
     background-color: #ffe2e2;
   }
-  .plus-btn{
-      cursor: pointer;
+
+  .plus-btn {
+    cursor: pointer;
   }
 
   .negative-body {
     background-color: #9fdffa;
   }
-  .div-body{
+
+  .div-body {
     width: 680px;
     height: 1000px;
     display: flex;

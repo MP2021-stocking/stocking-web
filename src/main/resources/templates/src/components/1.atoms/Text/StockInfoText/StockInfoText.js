@@ -3,11 +3,17 @@ import React from "react";
 import {Text} from "../Text";
 import StyledStockInfoText from "./StockInfoText.styles";
 import {withRouter} from "react-router-dom";
+import {checkFavStock} from "../../../../_actions/action";
 
-function StockInfoText({name, open, change, pred, size, weight, onChange}) {
+function StockInfoText({name, open, change, pred, size, weight, setStockName, setFavBtn}) {
     const setStockInfo = () =>{
         if (name !== "종목명") {
-            onChange(name)
+            setStockName(name)
+        }
+        if (checkFavStock(name).payload){
+            setFavBtn(1)
+        } else {
+            setFavBtn(0)
         }
     }
 

@@ -8,14 +8,18 @@ import StockChart from "./StockChart/StockChart";
 import {getStockInfo, addFavStock, deleteFavStock, checkFavStock} from "../../../_actions/action";
 import Button from "../../1.atoms/Button/Button";
 
-function StockInfo({name}) {
+function StockInfo({name, favBtn, setFavBtn}) {
     let stockData = getStockInfo(name).payload;
 
-    function onFavBtnClick() {
+    function onFavBtnClick(e) {
         if (checkFavStock(name).payload === 0) {
-            console.log(addFavStock(stockData).payload)
+            e.preventDefault()
+            setFavBtn(1)
+            addFavStock(stockData)
         } else {
-            console.log(deleteFavStock(stockData).payload)
+            e.preventDefault()
+            setFavBtn(0)
+            deleteFavStock(stockData)
         }
     }
 
@@ -37,7 +41,7 @@ function StockInfo({name}) {
                     {stockData.name}
                 </div>
                 <div className={"add-favorite"}>
-                    <Button onClick={onFavBtnClick} label={(checkFavStock(name).payload === 0) ? "Favorite" : "Remove"}
+                    <Button onClick={onFavBtnClick} label={(favBtn === 0) ? "Favorite" : "Remove"}
                             variant={"secondary"}/>
                 </div>
             </div>

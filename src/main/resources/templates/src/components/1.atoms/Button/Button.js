@@ -18,7 +18,7 @@ const CustomToggle = React.forwardRef(({children, onClick}, ref) => (
     </StyledToggle>
 ));
 
-const Button = ({label, href, icon, onClick, variant, items, onChange, ...props}) => {
+const Button = ({label, href, icon, onClick, variant, items, setStockName, ...props}) => {
     const [labelValue, setLabelValue] = useState(label);
 
     const setDropdownValue = (e) => {
@@ -43,7 +43,7 @@ const Button = ({label, href, icon, onClick, variant, items, onChange, ...props}
             stock_infos.push(<StockInfoText name={sorted_data[i].name} open={sorted_data[i].open}
                                             change={sorted_data[i].change}
                                             pred={sorted_data[i].pred} weight={400} size={"16px"}
-                                            onChange={onChange}/>)
+                                            setStockName={setStockName}/>)
         }
 
         props.setStockInfos(stock_infos)
